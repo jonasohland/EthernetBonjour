@@ -19,7 +19,7 @@
 //
 
 #define  HAS_SERVICE_REGISTRATION      1	// disabling saves about 1.25 kilobytes
-#define  HAS_NAME_BROWSING             1	// disable together with above, additionally saves about 4.3 kilobytes
+#define  HAS_NAME_BROWSING             0	// disable together with above, additionally saves about 4.3 kilobytes
 
 #include <string.h>
 #include <stdlib.h>
@@ -1052,7 +1052,7 @@ void EthernetBonjourClass::run()
 
 	// first, look for MDNS queries to handle
 	(void)_processMDNSQuery();
-
+/*
 	// are we querying a name or service? if so, should we resend the packet or time out?
 	for (i = 0; i < 2; i++) {
 		if (NULL != this->_resolveNames[i]) {
@@ -1092,7 +1092,7 @@ void EthernetBonjourClass::run()
 			}
 		}
 	}
-
+*/
 	// now, should we re-announce our services again?
 	unsigned long announceTimeOut = ( ( (uint32_t)MDNS_RESPONSE_TTL / 2 ) + ( (uint32_t)MDNS_RESPONSE_TTL / 4 ) );
 	if ( (now - this->_lastAnnounceMillis) > 1000 * announceTimeOut ) {
